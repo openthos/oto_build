@@ -219,3 +219,5 @@ $(hide) $(PRIVATE_CXX) \
 	$(if $(filter true,$(PRIVATE_NO_CRT)),,$(PRIVATE_TARGET_CRTEND_O)) \
 	$(PRIVATE_LDLIBS)
 endef
+
+TARGET_GLOBAL_YASM_FLAGS := -f elf64 -m amd64

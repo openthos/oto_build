@@ -214,3 +214,5 @@ $(hide) $(PRIVATE_CXX) \
 	-Wl,--end-group \
 	$(if $(filter true,$(PRIVATE_NO_CRT)),,$(PRIVATE_TARGET_CRTEND_O))
 endef
+
+$(combo_2nd_arch_prefix)TARGET_GLOBAL_YASM_FLAGS := -f elf32 -m x86

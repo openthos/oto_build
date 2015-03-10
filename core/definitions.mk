@@ -1041,10 +1041,11 @@ endef
 
 # YASM compilation
 define transform-asm-to-o
+@echo "target asm: $(PRIVATE_MODULE) <= $<"
 @mkdir -p $(dir $@)
 $(hide) $(YASM) \
     $(addprefix -I , $(PRIVATE_C_INCLUDES)) \
-    -f elf32 -m x86 \
+    $($(PRIVATE_2ND_ARCH_VAR_PREFIX)TARGET_GLOBAL_YASM_FLAGS) \
     $(PRIVATE_ASFLAGS) \
     -o $@ $<
 endef

@@ -960,6 +960,15 @@ define build-systemimage-target
   @echo "Target system fs image: $(1)"
   $(call create-system-vendor-symlink)
   @mkdir -p $(dir $(1)) $(systemimage_intermediates) && rm -rf $(systemimage_intermediates)/system_image_info.txt
+  $(shell cp bootable/newinstaller/replace/libgralloc_drm.so $(PRODUCT_OUT)/system/lib/)
+  $(shell cp bootable/newinstaller/replace/libgralloc_drm.so.64 $(PRODUCT_OUT)/system/lib64/)
+  $(shell cp bootable/newinstaller/replace/houdini5_* $(PRODUCT_OUT)/system/)
+  $(shell cp bootable/newinstaller/replace/enable_nativebridge $(PRODUCT_OUT)/system/bin/)
+  $(shell cp bootable/newinstaller/replace/bootanimation.zip $(PRODUCT_OUT)/system/media/)
+  $(shell cat $(PRODUCT_OUT)/system/etc/init.sh|head -n 425 >$(PRODUCT_OUT)/system/etc/init.sh.bak)
+  $(shell mv $(PRODUCT_OUT)/system/etc/init.sh.bak $(PRODUCT_OUT)/system/etc/init.sh)
+  $(shell echo enable_nativebridge >> $(PRODUCT_OUT)/system/etc/init.sh)
+  $(shell echo return 0 >> $(PRODUCT_OUT)/system/etc/init.sh)
   $(call generate-userimage-prop-dictionary, $(systemimage_intermediates)/system_image_info.txt, \
       skip_fsck=true)
   $(hide) PATH=$(foreach p,$(INTERNAL_USERIMAGES_BINARY_PATHS),$(p):)$$PATH \

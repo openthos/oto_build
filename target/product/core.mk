@@ -41,6 +41,7 @@ PRODUCT_PACKAGES += \
     Keyguard \
     LatinIME \
     Launcher2 \
+    LineRect \
     ManagedProvisioning \
     PicoTts \
     PacProcessor \

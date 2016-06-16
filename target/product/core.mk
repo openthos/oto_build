@@ -47,6 +47,7 @@ PRODUCT_PACKAGES += \
     PacProcessor \
     libpac \
     PrintSpooler \
+    Printer \
     ProxyHandler \
     QuickSearchBox \
     Settings \

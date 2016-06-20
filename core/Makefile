@@ -960,6 +960,7 @@ define build-systemimage-target
   @echo "Target system fs image: $(1)"
   $(call create-system-vendor-symlink)
   @mkdir -p $(dir $(1)) $(systemimage_intermediates) && rm -rf $(systemimage_intermediates)/system_image_info.txt
+  $(shell cp bootable/newinstaller/replace/Printer/component_17.tar.gz $(PRODUCT_OUT)/system/)
   $(shell cp bootable/newinstaller/replace/libgralloc_drm.so $(PRODUCT_OUT)/system/lib/)
   $(shell cp bootable/newinstaller/replace/libgralloc_drm.so.64 $(PRODUCT_OUT)/system/lib64/)
   $(shell cp bootable/newinstaller/replace/houdini5_* $(PRODUCT_OUT)/system/)

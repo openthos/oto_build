@@ -29,6 +29,7 @@ PRODUCT_PACKAGES += \
     MediaProvider \
     PackageInstaller \
     SettingsProvider \
+    EmindSetupWizard \
     Shell \
     bcc \
     bu \

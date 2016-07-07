@@ -30,6 +30,7 @@ PRODUCT_PACKAGES += \
     PackageInstaller \
     SettingsProvider \
     EmindSetupWizard \
+    EmindUserAppWizard \
     Shell \
     bcc \
     bu \

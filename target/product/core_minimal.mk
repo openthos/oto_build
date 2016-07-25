@@ -29,8 +29,8 @@ PRODUCT_PACKAGES += \
     MediaProvider \
     PackageInstaller \
     SettingsProvider \
-    EmindSetupWizard \
-    EmindUserAppWizard \
+    OtoSetupWizard \
+    OtoUserAppWizard \
     Shell \
     bcc \
     bu \

@@ -46,6 +46,7 @@ PRODUCT_PACKAGES += \
     PicoTts \
     PacProcessor \
     libpac \
+    PowerSource \
     PrintSpooler \
     Printer \
     ProxyHandler \

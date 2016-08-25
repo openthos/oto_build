@@ -56,6 +56,7 @@ PRODUCT_PACKAGES += \
     TeleService \
     VpnDialogs \
     MmsService \
-    OtoOta
+    OtoOta \
+    Launcher2 \
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_base.mk)

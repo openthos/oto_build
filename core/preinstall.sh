@@ -12,7 +12,7 @@ do
     if [ -n $src/$dir ];then
         if [ -e $src/$dir/"$dir".apk ];then
         	mv $src/$dir $target
-		rm -rf $src
 	fi
     fi
 done
+rm -rf $src

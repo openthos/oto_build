@@ -12,7 +12,12 @@ do
     if [ -n $src/$dir ];then
         if [ -e $src/$dir/"$dir".apk ];then
         	mv $src/$dir $target
+			cd $target/$dir
+			mv "$dir".apk base.apk
+			unzip base.apk lib*
 	fi
     fi
 done
-rm -rf $src
+chown -R system:system $target/*
+chmod -R 755 $target/*
+#rm -rf $src

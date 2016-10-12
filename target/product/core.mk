@@ -46,6 +46,7 @@ PRODUCT_PACKAGES += \
     PacProcessor \
     libpac \
     PowerSource \
+    StartupMenu \
     PrintSpooler \
     Printer \
     ProxyHandler \

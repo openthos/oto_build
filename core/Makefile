@@ -967,10 +967,6 @@ define build-systemimage-target
   $(shell cp bootable/newinstaller/replace/houdini5_* $(PRODUCT_OUT)/system/)
   $(shell cp bootable/newinstaller/replace/enable_nativebridge $(PRODUCT_OUT)/system/bin/)
   $(shell cp bootable/newinstaller/replace/bootanimation.zip $(PRODUCT_OUT)/system/media/)
-  $(shell cat $(PRODUCT_OUT)/system/etc/init.sh|head -n 425 >$(PRODUCT_OUT)/system/etc/init.sh.bak)
-  $(shell mv $(PRODUCT_OUT)/system/etc/init.sh.bak $(PRODUCT_OUT)/system/etc/init.sh)
-  $(shell echo enable_nativebridge >> $(PRODUCT_OUT)/system/etc/init.sh)
-  $(shell echo return 0 >> $(PRODUCT_OUT)/system/etc/init.sh)
   $(call generate-userimage-prop-dictionary, $(systemimage_intermediates)/system_image_info.txt, \
       skip_fsck=true)
   $(hide) PATH=$(foreach p,$(INTERNAL_USERIMAGES_BINARY_PATHS),$(p):)$$PATH \

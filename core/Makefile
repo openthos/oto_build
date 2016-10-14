@@ -964,9 +964,9 @@ define build-systemimage-target
   $(shell cp packages/apps/Printer/component_*.gz $(PRODUCT_OUT)/system/)
   $(shell cp bootable/newinstaller/replace/libgralloc_drm.so $(PRODUCT_OUT)/system/lib/)
   $(shell cp bootable/newinstaller/replace/libgralloc_drm.so.64 $(PRODUCT_OUT)/system/lib64/)
-  $(shell cp bootable/newinstaller/replace/houdini5_* $(PRODUCT_OUT)/system/)
   $(shell cp bootable/newinstaller/replace/enable_nativebridge $(PRODUCT_OUT)/system/bin/)
   $(shell cp bootable/newinstaller/replace/bootanimation.zip $(PRODUCT_OUT)/system/media/)
+  $(call houdini_copy)
   $(call generate-userimage-prop-dictionary, $(systemimage_intermediates)/system_image_info.txt, \
       skip_fsck=true)
   $(hide) PATH=$(foreach p,$(INTERNAL_USERIMAGES_BINARY_PATHS),$(p):)$$PATH \
@@ -978,6 +978,20 @@ define build-systemimage-target
            mkdir -p $(DIST_DIR); cp $(INSTALLED_FILES_FILE) $(DIST_DIR)/installed-files-rescued.txt; \
            exit 1 )
 endef
+ifeq ($(TARGET_PRODUCT),android_x86_64)
+define houdini_copy
+        $(shell tar jxf bootable/newinstaller/replace/houdini5_x86_64.tar.bz2 -C $(PRODUCT_OUT)/system/lib/arm/)
+	$(hide) echo $(TARGET_PRODUCT)
+endef
+else ifeq ($(TARGET_PRODUCT),android_x86)
+define houdini_copy
+        $(shell tar jxf bootable/newinstaller/replace/houdini5_x86.tar.bz2 -C $(PRODUCT_OUT)/system/lib64/arm64/)
+endef
+else
+define houdini_copy
+         $(shell tar jxf bootable/newinstaller/replace/houdini5_others.tar.bz2 -C $(PRODUCT_OUT)/system/lib64/arm64/)
+endef
+endif
 
 $(BUILT_SYSTEMIMAGE): $(FULL_SYSTEMIMAGE_DEPS) $(INSTALLED_FILES_FILE)
 	$(call build-systemimage-target,$@)

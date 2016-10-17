@@ -980,16 +980,16 @@ define build-systemimage-target
 endef
 ifeq ($(TARGET_PRODUCT),android_x86_64)
 define houdini_copy
-        $(shell tar jxf bootable/newinstaller/replace/houdini5_x86_64.tar.bz2 -C $(PRODUCT_OUT)/system/lib/arm/)
+        $(shell tar jxf bootable/newinstaller/replace/houdini5_x86_64.tar.bz2 -C $(PRODUCT_OUT)/system/lib64/arm64/)
 	$(hide) echo $(TARGET_PRODUCT)
 endef
 else ifeq ($(TARGET_PRODUCT),android_x86)
 define houdini_copy
-        $(shell tar jxf bootable/newinstaller/replace/houdini5_x86.tar.bz2 -C $(PRODUCT_OUT)/system/lib64/arm64/)
+        $(shell tar jxf bootable/newinstaller/replace/houdini5_x86.tar.bz2 -C $(PRODUCT_OUT)/system/lib/arm/)
 endef
 else
 define houdini_copy
-         $(shell tar jxf bootable/newinstaller/replace/houdini5_others.tar.bz2 -C $(PRODUCT_OUT)/system/lib64/arm64/)
+         $(shell tar jxf bootable/newinstaller/replace/houdini5_others.tar.bz2 -C $(PRODUCT_OUT)/system/lib/arm/)
 endef
 endif
 

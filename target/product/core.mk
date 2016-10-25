@@ -59,5 +59,6 @@ PRODUCT_PACKAGES += \
     MmsService \
     OtoOta \
     Launcher2 \
+    OtoTerminal \
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_base.mk)

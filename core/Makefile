@@ -967,6 +967,9 @@ define build-systemimage-target
   $(shell cp bootable/newinstaller/replace/enable_nativebridge $(PRODUCT_OUT)/system/bin/)
   $(shell cp bootable/newinstaller/replace/bootanimation.zip $(PRODUCT_OUT)/system/media/)
   $(call houdini_copy)
+  $(shell echo "version:1.8.7" > $(PRODUCT_OUT)/system/version)
+  $(shell echo -n "date:" >> $(PRODUCT_OUT)/system/version)
+  $(shell date "+%Y.%m.%d" >> $(PRODUCT_OUT)/system/version)
   $(call generate-userimage-prop-dictionary, $(systemimage_intermediates)/system_image_info.txt, \
       skip_fsck=true)
   $(hide) PATH=$(foreach p,$(INTERNAL_USERIMAGES_BINARY_PATHS),$(p):)$$PATH \

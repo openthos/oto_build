@@ -61,6 +61,7 @@ PRODUCT_PACKAGES += \
     Launcher2 \
     OtoTerminal \
     OtoFileManager \
-    OtoVirtualGUI
+    OtoVirtualGUI \
+    OtoAppStore
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_base.mk)

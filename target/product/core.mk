@@ -63,6 +63,7 @@ PRODUCT_PACKAGES += \
     OtoFileManager \
     OtoVirtualGUI \
     OtoAppStore \
+    OtoPinyinIME \
     7z \
     7za \
     7zr

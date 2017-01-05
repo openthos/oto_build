@@ -454,7 +454,8 @@ BUILT_RAMDISK_TARGET := $(PRODUCT_OUT)/ramdisk.img
 # We just build this directly to the install location.
 INSTALLED_RAMDISK_TARGET := $(BUILT_RAMDISK_TARGET)
 $(INSTALLED_RAMDISK_TARGET): $(MKBOOTFS) $(INTERNAL_RAMDISK_FILES) | $(MINIGZIP)
-	$(hide) $(shell cp $(LOCAL_PATH)/preinstall.sh $(TARGET_ROOT_OUT);chmod 777 $(TARGET_ROOT_OUT)/preinstall.sh)
+	$(hide) $(shell rm $(TARGET_ROOT_OUT)/preinstall.sh;cp $(LOCAL_PATH)/preinstall.sh $(TARGET_ROOT_OUT);\
+	chmod 777 $(TARGET_ROOT_OUT)/preinstall.sh)
 	$(call pretty,"Target ram disk: $@")
 	$(hide) $(MKBOOTFS) $(TARGET_ROOT_OUT) | $(MINIGZIP) > $@
 
@@ -962,6 +963,7 @@ define build-systemimage-target
   $(call create-system-vendor-symlink)
   @mkdir -p $(dir $(1)) $(systemimage_intermediates) && rm -rf $(systemimage_intermediates)/system_image_info.txt
   $(shell cp packages/apps/Printer/component_*.gz $(PRODUCT_OUT)/system/)
+  $(shell cp packages/apps/OtoFileManager/sea.tar.bz $(PRODUCT_OUT)/system/)
   $(shell cp bootable/newinstaller/replace/libgralloc_drm.so $(PRODUCT_OUT)/system/lib/)
   $(shell cp bootable/newinstaller/replace/libgralloc_drm.so.64 $(PRODUCT_OUT)/system/lib64/)
   $(shell cp bootable/newinstaller/replace/enable_nativebridge $(PRODUCT_OUT)/system/bin/)

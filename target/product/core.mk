@@ -64,8 +64,7 @@ PRODUCT_PACKAGES += \
     OtoVirtualGUI \
     OtoAppStore \
     OtoPinyinIME \
-    7z \
     7za \
-    7zr
+    unrar
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_base.mk)

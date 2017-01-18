@@ -964,6 +964,7 @@ define build-systemimage-target
   @mkdir -p $(dir $(1)) $(systemimage_intermediates) && rm -rf $(systemimage_intermediates)/system_image_info.txt
   $(shell cp packages/apps/Printer/component_*.gz $(PRODUCT_OUT)/system/)
   $(shell cp packages/apps/OtoFileManager/sea.tar.bz $(PRODUCT_OUT)/system/)
+  $(shell cp packages/apps/OtoLauncher/create.tar.gz $(PRODUCT_OUT)/system/)
   $(shell cp bootable/newinstaller/replace/libgralloc_drm.so $(PRODUCT_OUT)/system/lib/)
   $(shell cp bootable/newinstaller/replace/libgralloc_drm.so.64 $(PRODUCT_OUT)/system/lib64/)
   $(shell cp bootable/newinstaller/replace/enable_nativebridge $(PRODUCT_OUT)/system/bin/)

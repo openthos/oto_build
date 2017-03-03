@@ -965,8 +965,6 @@ define build-systemimage-target
   $(shell cp packages/apps/Printer/component_*.gz $(PRODUCT_OUT)/system/)
   $(shell cp packages/apps/OtoFileManager/sea.tar.bz $(PRODUCT_OUT)/system/)
   $(shell cp packages/apps/OtoLauncher/create.tar.gz $(PRODUCT_OUT)/system/)
-  $(shell cp bootable/newinstaller/replace/libgralloc_drm.so $(PRODUCT_OUT)/system/lib/)
-  $(shell cp bootable/newinstaller/replace/libgralloc_drm.so.64 $(PRODUCT_OUT)/system/lib64/)
   $(shell cp bootable/newinstaller/replace/bootanimation.zip $(PRODUCT_OUT)/system/media/)
   $(call generate-userimage-prop-dictionary, $(systemimage_intermediates)/system_image_info.txt, \
       skip_fsck=true)

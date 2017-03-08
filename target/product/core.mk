@@ -61,7 +61,6 @@ PRODUCT_PACKAGES += \
     Launcher2 \
     OtoTerminal \
     OtoFileManager \
-    OtoVirtualGUI \
     OtoAppStore \
     OtoPinyinIME \
     7za \

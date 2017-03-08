@@ -50,7 +50,6 @@ PRODUCT_PACKAGES += \
     PrintSpooler \
     Printer \
     ProxyHandler \
-    QuickSearchBox \
     Settings \
     SharedStorageBackup \
     Telecom \

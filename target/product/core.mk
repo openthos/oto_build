@@ -58,7 +58,6 @@ PRODUCT_PACKAGES += \
     MmsService \
     OtoOta \
     Launcher2 \
-    OtoTerminal \
     OtoFileManager \
     OtoAppStore \
     OtoPinyinIME \

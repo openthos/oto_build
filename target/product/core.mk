@@ -50,7 +50,6 @@ PRODUCT_PACKAGES += \
     PrintSpooler \
     Printer \
     ProxyHandler \
-    QuickSearchBox \
     Settings \
     SharedStorageBackup \
     Telecom \
@@ -61,7 +60,6 @@ PRODUCT_PACKAGES += \
     Launcher2 \
     OtoTerminal \
     OtoFileManager \
-    OtoVirtualGUI \
     OtoAppStore \
     OtoPinyinIME \
     7za \

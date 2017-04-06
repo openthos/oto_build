@@ -59,4 +59,6 @@ fi
 echo "ro.build.characteristics=$TARGET_AAPT_CHARACTERISTICS"
 echo "persist.sys.nativebridge=1"
 
+echo "persist.rtc_local_time=1"
+echo "persist.sys.timezone=Asia/Shanghai"
 echo "# end build properties"

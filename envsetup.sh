@@ -1663,7 +1663,10 @@ function set_java_home() {
                 export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
                 ;;
             *)
-                export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+                for j in java-1.7.0 java-7-openjdk-amd64; do
+                    [ -d /usr/lib/jvm/$j ] && break
+                done
+                export JAVA_HOME=/usr/lib/jvm/$j
                 ;;
         esac
       fi

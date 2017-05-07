@@ -57,6 +57,7 @@ PRODUCT_PACKAGES += \
     VpnDialogs \
     MmsService \
     OtoOta \
+    OtoTestInFactory \
     Launcher2 \
     OtoTerminal \
     OtoFileManager \

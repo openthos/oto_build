@@ -957,6 +957,14 @@ define create-system-vendor-symlink
 endef
 endif
 
+OPENTHOS_VERSION := $(TARGET_OUT)/version
+$(OPENTHOS_VERSION): FORCE
+	echo "version:"`curl -sf -L http://dev.openthos.org/openthos/oto_ota.ver \
+	|awk -F "=" '{if(NR==1){gsub("\\.","",$$2);ver=$$2+1;print int(ver/100)"."int(ver%100/10)"."ver%100%10}}'`\
+	> $@
+	echo -n "date:" >> $@
+	date "+%Y.%m.%d" >> $@
+
 # $(1): output file
 define build-systemimage-target
   @echo "Target system fs image: $(1)"
@@ -969,11 +977,6 @@ define build-systemimage-target
   $(shell cp bootable/newinstaller/replace/bootanimation.zip $(PRODUCT_OUT)/system/media/)
   $(call generate-userimage-prop-dictionary, $(systemimage_intermediates)/system_image_info.txt, \
       skip_fsck=true)
-  $(shell echo "version:"`curl -sf -L http://dev.openthos.org/openthos/oto_ota.ver|\
-        awk -F "=" '{if(NR==1){gsub("\\.","",$$2);ver=$$2+1;print int(ver/100)"."int(ver%100/10)"."ver%100%10}}'`\
-         > $(PRODUCT_OUT)/system/version)
-  $(shell echo -n "date:" >> $(PRODUCT_OUT)/system/version)
-  $(shell date "+%Y.%m.%d" >> $(PRODUCT_OUT)/system/version)
 
   $(hide) PATH=$(foreach p,$(INTERNAL_USERIMAGES_BINARY_PATHS),$(p):)$$PATH \
       ./build/tools/releasetools/build_image.py \
@@ -985,7 +988,7 @@ define build-systemimage-target
            exit 1 )
 endef
 
-$(BUILT_SYSTEMIMAGE): $(FULL_SYSTEMIMAGE_DEPS) $(INSTALLED_FILES_FILE)
+$(BUILT_SYSTEMIMAGE): $(FULL_SYSTEMIMAGE_DEPS) $(INSTALLED_FILES_FILE) $(OPENTHOS_VERSION)
 	$(call build-systemimage-target,$@)
 
 INSTALLED_SYSTEMIMAGE := $(PRODUCT_OUT)/system.img

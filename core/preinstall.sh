@@ -12,10 +12,19 @@ do
     if [ -n $src/$dir ];then
         if [ -e $src/$dir/"$dir".apk ];then
         	mv $src/$dir $target
-			cd $target/$dir
-			mv "$dir".apk base.apk
-			unzip base.apk lib*
-	fi
+                cd $target/$dir
+                mv "$dir".apk base.apk
+                unzip base.apk lib*
+                if [ -d lib/arm64-v8a ];then
+                    mv lib/arm64-v8a lib/arm64
+                fi
+                if [ -d lib/armeabi-v7a ];then
+                    mv lib/armeabi-v7a lib/arm
+                fi
+                if [ -d lib/armeabi ];then
+                    mv lib/armeabi lib/arm
+                fi
+        fi
     fi
 done
 chown -R system:system $target/*

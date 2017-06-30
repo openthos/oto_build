@@ -963,7 +963,7 @@ $(OPENTHOS_VERSION): FORCE
 	|awk -F "=" '{if(NR==1){gsub("\\.","",$$2);ver=$$2+1;print int(ver/100)"."int(ver%100/10)"."ver%100%10}}'`\
 	> $@
 	echo -n "date:" >> $@
-	date "+%Y.%m.%d" >> $@
+	date "+%y%m%d" >> $@
 
 # $(1): output file
 define build-systemimage-target

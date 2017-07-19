@@ -959,10 +959,7 @@ endif
 
 OPENTHOS_VERSION := $(TARGET_OUT)/version
 $(OPENTHOS_VERSION): FORCE
-	echo "version:"`curl -sf -L http://dev.openthos.org/openthos/oto_ota.ver \
-	|awk -F "=" '{if(NR==1){gsub("\\.","",$$2);ver=$$2+1;print int(ver/100)"."int(ver%100/10)"."ver%100%10}}'`\
-	> $@
-	echo -n "date:" >> $@
+	echo -n "version:1.0.0." > $@
 	date "+%y%m%d" >> $@
 
 # $(1): output file

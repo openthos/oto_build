@@ -40,6 +40,8 @@ PRODUCT_PACKAGES += \
     KeyChain \
     Keyguard \
     LatinIME \
+    Launcher2 \
+    Launcher3 \
     LineRect \
     ManagedProvisioning \
     PicoTts \
@@ -56,13 +58,6 @@ PRODUCT_PACKAGES += \
     TeleService \
     VpnDialogs \
     MmsService \
-    OtoOta \
-    OtoTestInFactory \
-    Launcher2 \
-    OtoTerminal \
-    OtoFileManager \
-    OtoAppStore \
-    OtoPinyinIME \
     7za \
     unrar
 

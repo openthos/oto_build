@@ -967,11 +967,6 @@ define build-systemimage-target
   @echo "Target system fs image: $(1)"
   $(call create-system-vendor-symlink)
   @mkdir -p $(dir $(1)) $(systemimage_intermediates) && rm -rf $(systemimage_intermediates)/system_image_info.txt
-  $(shell cp packages/apps/Printer/component_*.gz $(PRODUCT_OUT)/system/)
-  $(shell cp packages/apps/OtoFileManager/sea.tar.bz $(PRODUCT_OUT)/system/)
-  $(shell cp packages/apps/OtoLauncher/create.tar.gz $(PRODUCT_OUT)/system/)
-  $(shell cp bootable/newinstaller/replace/fennec_initdata.tar.bz2 $(PRODUCT_OUT)/system/)
-  $(shell cp bootable/newinstaller/replace/bootanimation.zip $(PRODUCT_OUT)/system/media/)
   $(call generate-userimage-prop-dictionary, $(systemimage_intermediates)/system_image_info.txt, \
       skip_fsck=true)
 

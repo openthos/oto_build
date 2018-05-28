@@ -26,7 +26,7 @@ KERNEL_CONFIG_DIR := arch/arm/configs
 endif
 
 ifeq ($(TARGET_KERNEL_ARCH),x86_64)
-CROSS_COMPILE ?= $(abspath prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.11-4.6/bin)/x86_64-linux-
+CROSS_COMPILE ?= $(abspath prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-7.3/bin)/x86_64-linux-
 else
 CROSS_COMPILE ?= /usr/bin/
 endif
@@ -61,12 +61,6 @@ $(INSTALLED_KERNEL_TARGET): $(KERNEL_DOTCONFIG_FILE) | $(ACP) $(BISON)
 ifneq ($(MOD_ENABLED),)
 KERNEL_MODULES_DEP := $(firstword $(wildcard $(TARGET_OUT)/lib/modules/*/modules.dep))
 KERNEL_MODULES_DEP := $(if $(KERNEL_MODULES_DEP),$(KERNEL_MODULES_DEP),$(TARGET_OUT)/lib/modules)
-
-ALL_EXTRA_MODULES := $(patsubst %,$(TARGET_OUT_INTERMEDIATES)/kmodule/%,$(TARGET_EXTRA_KERNEL_MODULES))
-$(ALL_EXTRA_MODULES): $(TARGET_OUT_INTERMEDIATES)/kmodule/%: $(INSTALLED_KERNEL_TARGET)
-	@echo Building additional kernel module $*
-	$(hide) mkdir -p $(@D) && $(ACP) -fr $(EXTRA_KERNEL_MODULE_PATH_$*) $(@D)
-	$(mk_kernel) M=$(abspath $@) modules
 
 $(KERNEL_MODULES_DEP): $(INSTALLED_KERNEL_TARGET) $(ALL_EXTRA_MODULES)
 	$(hide) rm -rf $(TARGET_OUT)/lib/modules

@@ -959,7 +959,7 @@ endif
 
 OPENTHOS_VERSION := $(TARGET_OUT)/version
 $(OPENTHOS_VERSION): FORCE
-	echo -n "version:1.0.0." > $@
+	echo -n "version:1.1.0." > $@
 	date "+%y%m%d" >> $@
 
 # $(1): output file

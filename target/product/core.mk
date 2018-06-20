@@ -50,7 +50,6 @@ PRODUCT_PACKAGES += \
     PowerSource \
     StartupMenu \
     PrintSpooler \
-    Printer \
     ProxyHandler \
     Settings \
     SharedStorageBackup \

@@ -714,6 +714,10 @@ endif
 SELINUX_FC := $(TARGET_ROOT_OUT)/file_contexts
 INTERNAL_USERIMAGES_DEPS += $(SELINUX_FC)
 
+ifeq ($(filter-out 0,$(BOARD_SYSTEMIMAGE_PARTITION_SIZE)),)
+BOARD_SYSTEMIMAGE_PARTITION_SIZE = $(shell echo $$(($$(du -sm $(TARGET_OUT) | cut -f1) * 15 / 10 * 1048576)))
+endif
+
 # $(1): the path of the output dictionary file
 # $(2): additional "key=value" pairs to append to the dictionary file.
 define generate-userimage-prop-dictionary
